@@ -31,9 +31,18 @@ function insertPickUpCards(orderForm){
 
             if(shippingMethod.deliveryChannel == 'pickup-in-point' && control < 3) {
                 control++;
+                let newName = shippingMethod.pickupStoreInfo.friendlyName.replace('Retirada -', '');
+                if(newName == 'CHEAPEST') {
+                    newName = 'Mais econômica'
+                }
+    
+                if(newName == 'FASTEST') {
+                    newName = 'Mais rápida'
+                }
+
                 insertOptions({
                     id: shippingMethod.id,
-                    name: shippingMethod.pickupStoreInfo.friendlyName.replace('Retirada -', ''),
+                    name: newName,
                     price: formatPrice(shippingMethod.price),
                     deliveryTerm: formatShippingEstimate(shippingMethod.shippingEstimate),
                     method: 'pickup-in-point'
@@ -66,7 +75,7 @@ function insertDeliveryCards() {
             
             insertOptions({
                 id: optionDelivery.value,
-                name: optionDelivery.value,
+                name: newName,
                 price: optionDelivery.text.split('-')[1],
                 deliveryTerm: optionDelivery.text.split('-')[0],
                 method: 'delivery'
