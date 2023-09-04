@@ -55,6 +55,15 @@ function insertDeliveryCards() {
         allOptionsDelivery.forEach((optionDelivery) => {
             optionDelivery.text.split('-');
 
+            let newName = optionDelivery.value;
+            if(newName == 'CHEAPEST') {
+                newName = 'Mais econômica'
+            }
+
+            if(newName == 'FASTEST') {
+                newName = 'Mais rápida'
+            }
+            
             insertOptions({
                 id: optionDelivery.value,
                 name: optionDelivery.value,

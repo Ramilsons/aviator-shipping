@@ -4238,11 +4238,13 @@ button#find-pickups-manualy-button {
  
 .custom-name {
     font-size: 18px;
+    margin-bottom: 4px;
+    font-weight: 700;
+    color: #000;
 }
 
 .custom-radio-and-name small {
     font-size: 14px;
-    font-weight: 700;
 }
 
 .custom-price-delivery {
@@ -4262,7 +4264,7 @@ button#find-pickups-manualy-button {
     height: 16px !important;
 }
 
-.custom-name, .custom-price-info {
+.custom-price-info {
     margin-bottom: 0;
 }
 
