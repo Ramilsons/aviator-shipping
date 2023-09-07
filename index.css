@@ -1496,6 +1496,10 @@ input:focus,textarea:focus {
     }
 }
 
+.srp-result:after {
+    display: none;
+}
+
 #vtexIdContainer {
     background: rgba(0,0,0,.7);
     position: fixed;
@@ -2336,7 +2340,7 @@ body {
 }
 
 #shipping-preview-container #find-pickup-link span {
-    color: #252526;
+    color: #fff;
     font-family: Nunito Sans;
     font-size: 14px;
     font-weight: 700;
@@ -4281,6 +4285,10 @@ button#find-pickups-manualy-button {
     color: #252526;
     cursor: pointer;
     display: none;
+}
+
+.margin-none {
+    margin: 0;
 }
 
 .custom-radio-pickup-in-point-selected {

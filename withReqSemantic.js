@@ -1,15 +1,22 @@
 $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
-    $('.custom-radio-delivery-selected').remove();
-    $('.custom-radio-pickup-in-point-selected').remove();
-    insertContainer();
-    insertDeliveryCards();
-    insertPickUpCards(orderForm);
 
-    getMethodActual(orderForm);
-    insertFirstChecked(orderForm);
-    // se nao existir nossa classe, rodar a função de insert novamente
-    if(document.querySelectorAll('.custom-card-radio-option.delivery').length == 0 && $('.srp-toggle__delivery').hasClass('blue')) {
-        vtexjs.checkout.getOrderForm();
+    if($('.shp-alert-shipping-unavailable').length < 1){
+        $('.custom-radio-delivery-selected').remove();
+        $('.custom-radio-pickup-in-point-selected').remove();
+
+        insertContainer();
+        insertDeliveryCards();
+        insertPickUpCards(orderForm);
+    
+        getMethodActual(orderForm);
+        insertFirstChecked(orderForm);
+
+        // se nao existir nossa classe, rodar a função de insert novamente
+        if(document.querySelectorAll('.custom-card-radio-option.delivery').length == 0 && $('.srp-toggle__delivery').hasClass('blue')) {
+            vtexjs.checkout.getOrderForm();
+        }
+
+        $('.custom-radio-delivery-selected').height() == 0 ? $('.custom-radio-delivery-selected').addClass('margin-none') : null;
     }
 });
 
@@ -135,6 +142,10 @@ function insertContainer() {
     `;
 
     $('#shipping-preview-container').parent().append(newHtmlContainerRadio);
+
+    setTimeout(() => {
+        $('.srp-result').append($('.srp-pickup-info'));
+    }, 1000)
 }
 
 function changeRadioSelected(id) {
