@@ -11,7 +11,6 @@ $(window).on('orderFormUpdated.vtex', function(evt, orderForm) {
         getMethodActual(orderForm);
         insertFirstChecked(orderForm);
 
-        // se nao existir nossa classe, rodar a função de insert novamente
         if(document.querySelectorAll('.custom-card-radio-option.delivery').length == 0 && $('.srp-toggle__delivery').hasClass('blue')) {
             vtexjs.checkout.getOrderForm();
         }
@@ -60,7 +59,7 @@ function insertPickUpCards(orderForm){
 
     $(`.custom-radio-pickup-in-point-selected`).append('<a class="more-pickup-points">Ver mais opções de retirada ></a>');
     $('.more-pickup-points').on('click', () => {
-        document.querySelector('.srp-address-title.link').click();
+        document.querySelector('.srp-pickup-info .srp-address-title.link').click();
     })
 }
 
@@ -142,10 +141,6 @@ function insertContainer() {
     `;
 
     $('#shipping-preview-container').parent().append(newHtmlContainerRadio);
-
-    setTimeout(() => {
-        $('.srp-result').append($('.srp-pickup-info'));
-    }, 1000)
 }
 
 function changeRadioSelected(id) {
@@ -180,10 +175,16 @@ function uploadMethodShipping(id){
 
         vtexjs.checkout.sendAttachment('shippingData', originalShippingData)
             .then(function(orderForm) {
-                console.log(orderForm);
+                console.log('updated');
             })
     })
 }
+
+$(document).on("ajaxComplete", function( event, xhr, settings ) {
+    if(settings.url.indexOf('/pub/orderForms/simulation') != -1) {
+        $('.srp-result').append($('.srp-pickup-info'));
+    }
+});
 
 function getMethodActual(orderForm) {
     let methodsSelected = [];

@@ -2327,7 +2327,7 @@ body {
     font-weight: 700;
     font-style: normal;
     letter-spacing: .7px;
-    line-height: 14px
+    line-height: 14px;
 }
 
 #shipping-preview-container .srp-pickup-my-location__button {
@@ -2336,7 +2336,12 @@ body {
     background-color: #000;
     text-transform: none;
     border: none;
-    font-family: Nunito Sans
+    font-family: Nunito Sans;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #shipping-preview-container #find-pickup-link span {
@@ -2346,7 +2351,7 @@ body {
     font-weight: 700;
     font-style: normal;
     letter-spacing: .7px;
-    margin-top: 10px;
+    margin-top: 0;
     text-decoration: underline;
     display: block;
     text-transform: none
@@ -4315,7 +4320,6 @@ button#find-pickups-manualy-button {
 .srp-pickup-info {
     display: none;
 }
-
 */
 
 .custom-radio-pickup-in-point-selected .srp-pickup-info{
@@ -4339,4 +4343,17 @@ button#find-pickups-manualy-button {
     color: #252526!important;
     font-size: 20px!important;
     font-weight: 700;
+}
+
+.vtex-shipping-preview-0-x-alertIcon, .vtex-shipping-preview-0-x-alertPickup {
+    border-color: #000;
+}
+
+.shp-alert-icon.vtex-shipping-preview-0-x-alertIcon svg g {
+    fill: #000;
+}
+
+.onda-v1 .underline {
+    font-weight: bolder;
+    color: #7b7c80;
 }
